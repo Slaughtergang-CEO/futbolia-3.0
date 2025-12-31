@@ -1,0 +1,973 @@
+/* Reset */
+* {margin:0; padding:0; box-sizing:border-box; font-family: Arial, sans-serif;}
+
+/* Header */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 1000;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+.header.scrolled {
+  background: rgba(0,0,0,0.85);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.logo { 
+  font-size: 24px; 
+  font-weight: bold; 
+  color:#fff; 
+  margin-bottom:5px; 
+}
+
+/* Navigation – Desktop */
+.header .nav-links a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 10px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.header .nav-links a:hover {
+  color: #0077ff;
+}
+
+/* Hamburger */
+.hamburger { 
+  display:none; 
+  flex-direction:column; 
+  gap:5px; 
+  cursor:pointer; 
+}
+.hamburger span { 
+  width:25px; 
+  height:3px; 
+  background:#fff; 
+  border-radius:2px; 
+  transition:0.3s; 
+}
+
+/* Hero */
+/* Hero-Bereich KORRIGIERT */
+.hero { 
+  position: relative; 
+  width: 100%; 
+  height: 100vh; /* Wichtig: 100vh statt 80vh */
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  text-align: center;
+  background-size: cover;
+  background-position: center;
+  background-image: url('bilder/thumbnail.jpg'); /* Hier dein Hintergrundbild */
+}
+
+.hero-overlay { 
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4); /* Dunkler Overlay */
+  z-index: 1;
+}
+
+.hero-text { 
+  position: relative;
+  z-index: 2;
+  color: #fff; 
+  padding: 20px; 
+  background: rgba(0,0,0,0.4); 
+  border-radius: 10px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.hero-text.visible { 
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero-text h1 { 
+  font-size: 48px; 
+  margin-bottom: 10px; 
+}
+
+.hero-text p { 
+  font-size: 20px; 
+  margin-bottom: 20px; 
+}
+
+.btn { 
+  display: inline-block; 
+  padding: 12px 25px; 
+  background: #ffcc00; 
+  color: #000; 
+  font-weight: bold; 
+  border-radius: 5px; 
+  text-decoration: none; 
+  transition: 0.3s; 
+}
+
+.btn:hover { 
+  background: #e6b800; 
+}
+
+/* Responsive für Hero */
+@media screen and (max-width: 768px) {
+  .hero {
+    height: 80vh; /* Auf Mobilgeräten etwas kleiner */
+  }
+  
+  .hero-text h1 { 
+    font-size: 2.2rem; 
+  }
+  
+  .hero-text p { 
+    font-size: 1.2rem; 
+  }
+}
+.btn { 
+  display:inline-block; 
+  padding:12px 25px; 
+  background:#ffcc00; 
+  color:#000; 
+  font-weight:bold; 
+  border-radius:5px; 
+  text-decoration:none; 
+  transition:0.3s; 
+}
+.btn:hover { 
+  background:#e6b800; 
+}
+
+/* Why Us */
+.why-us { 
+  padding:80px 10%; 
+  background:#f9f9f9; 
+  text-align:center;
+}
+.why-us-content { 
+  display:flex; 
+  flex-wrap:wrap; 
+  justify-content:center; 
+  gap:20px;
+}
+.why-block { 
+  background:#fff; 
+  padding:20px; 
+  border-radius:10px; 
+  flex:1 1 250px; 
+  box-shadow:0 4px 10px rgba(0,0,0,0.1); 
+  transition:0.3s;
+}
+.why-block:hover { 
+  transform: translateY(-5px); 
+  box-shadow:0 8px 16px rgba(0,0,0,0.15);
+}
+
+/* Leistungen */
+.leistungs-blocks { 
+  display:flex; 
+  flex-wrap:wrap; 
+  justify-content:center; 
+  gap:20px;
+}
+.leistung { 
+  flex:1 1 250px; 
+  text-align:center; 
+  background:#fff; 
+  padding:20px; 
+  border-radius:10px; 
+  box-shadow:0 4px 10px rgba(0,0,0,0.1); 
+  transition:0.3s;
+}
+.leistung img { 
+  width:100%; 
+  height:200px; 
+  object-fit:cover; 
+  border-radius:10px; 
+  margin-bottom:15px; 
+  transition:0.3s;
+}
+.leistung img:hover { 
+  transform: scale(1.05); 
+  box-shadow:0 6px 12px rgba(0,0,0,0.2);
+}
+
+/* Leistungs-Detailseite */
+.leistungen-full { 
+  display:flex; 
+  flex-direction:column; 
+  gap:40px; 
+  padding:80px 10%; 
+  background:#f5f5f5;
+}
+.leistung-detailed { 
+  background:#fff; 
+  border-radius:10px; 
+  padding:20px; 
+  box-shadow:0 4px 12px rgba(0,0,0,0.1); 
+  text-align:center; 
+  transition:0.3s;
+  width: 1500px;
+  height: 900px;
+  padding: 8px;
+  font-size: 12px;
+}
+.leistung-detailed img { 
+  width:90%; 
+  height:100px; 
+  object-fit:cover; 
+  border-radius:10px; 
+  margin-bottom:15px; 
+  transition:0.3s;
+}
+.leistung-detailed:hover { 
+  transform: translateY(-5px); 
+  box-shadow:0 8px 16px rgba(0,0,0,0.15);
+}
+.leistung-detailed h3 { 
+  margin-bottom:15px; 
+  font-size:1.8rem; 
+}
+.leistung-detailed p { 
+  margin-bottom:20px; 
+  font-size:1.1rem; 
+  line-height:1.5;
+}
+
+/* Team Mitglieder */
+.team-container { 
+  display:flex; 
+  flex-wrap:wrap; 
+  justify-content:center; 
+  gap:40px; 
+  margin-top:50px;
+}
+.team-member { 
+  flex:1 1 250px; 
+  background:#fff; 
+  border-radius:10px; 
+  padding:20px; 
+  box-shadow:0 4px 12px rgba(0,0,0,0.1); 
+  transform: translateY(50px); 
+  opacity:0; 
+  transition: all 0.8s ease;
+}
+.team-member.visible { 
+  opacity:1; 
+  transform: translateY(0);
+}
+.team-member img { 
+  width:100%; 
+  height:250px; 
+  object-fit:cover; 
+  border-radius:10px; 
+  margin-bottom:15px;
+}
+.team-member h3 { 
+  margin-bottom:10px; 
+  font-size:1.4rem;
+}
+.team-member p { 
+  font-size:1.1rem; 
+  color:#555;
+}
+
+/* CTA Kontakt */
+.cta-contact h2 { 
+  font-size:2rem; 
+  margin-bottom:20px;
+}
+.cta-contact .btn { 
+  font-size:18px; 
+  padding:15px 30px; 
+}
+
+/* Kontaktformular */
+.contact-form-section h2 { 
+  text-align:center; 
+  margin-bottom:40px; 
+  font-size:2rem;
+}
+.contact-form { 
+  display:flex; 
+  flex-direction:column; 
+  gap:20px; 
+  width:100%; 
+  max-width:600px; 
+  margin:0 auto;
+}
+.contact-form input, .contact-form textarea { 
+  padding:15px; 
+  border-radius:8px; 
+  border:1px solid #ccc; 
+  font-size:16px; 
+  transition:0.3s;
+}
+.contact-form input:focus, .contact-form textarea:focus { 
+  outline:none; 
+  border-color:#0077ff; 
+  box-shadow:0 0 10px rgba(0,119,255,0.3);
+}
+.contact-form button { 
+  padding:15px; 
+  font-size:18px; 
+  border:none; 
+  border-radius:8px; 
+  background:#0077ff; 
+  color:#fff; 
+  cursor:pointer; 
+  transition:0.3s;
+}
+.contact-form button:hover { 
+  background:#005fcc; 
+  transform: translateY(-2px); 
+  box-shadow:0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* Kontaktinfo Blöcke */
+.contact-info-section { 
+  text-align:center; 
+}
+.contact-block { 
+  background:#fff; 
+  padding:20px; 
+  border-radius:10px; 
+  flex:1 1 200px; 
+  box-shadow:0 4px 12px rgba(0,0,0,0.1); 
+  transition:0.3s;
+}
+.contact-block:hover { 
+  transform: translateY(-5px); 
+  box-shadow:0 8px 16px rgba(0,0,0,0.15);
+}
+.contact-block h3 { 
+  margin-bottom:10px; 
+  font-size:1.4rem;
+}
+.contact-block p { 
+  font-size:1.1rem;
+}
+
+/* Google Maps responsive */
+iframe { 
+  border-radius:10px; 
+  max-width:100%; 
+  height:400px; 
+}
+
+/* Info Blocks (alternative) */
+.info-blocks { 
+  display:flex; 
+  flex-wrap:wrap; 
+  justify-content:center; 
+  gap:20px; 
+  padding:60px 10%; 
+}
+.block { 
+  flex:1 1 250px; 
+  max-width:300px; 
+  text-align:center; 
+}
+.block img { 
+  width:100%; 
+  height:200px; 
+  object-fit:cover; 
+  border-radius:10px; 
+  margin-bottom:15px; 
+}
+.block h2 { 
+  margin-bottom:10px; 
+  color:#333; 
+}
+.block p { 
+  color:#555; 
+}
+
+/* Footer */
+.footer { 
+  text-align:center; 
+  padding:20px; 
+  background:#222; 
+  color:#fff; 
+  margin-top:40px; 
+}
+
+/* Responsive */
+@media screen and (max-width:768px){
+  .why-us-content, 
+  .leistungs-blocks, 
+  .leistungen-full, 
+  .team-container,
+  .info-blocks {
+    flex-direction: column;
+    gap: 30px;
+  }
+  
+  .hero { 
+    padding:80px 5%;
+  }
+  
+  .hero-text h1 { 
+    font-size:2.2rem; 
+  }
+  
+  .hero-text p { 
+    font-size:1.2rem; 
+  }
+  
+  .contact-info-section { 
+    flex-direction:column; 
+    gap:20px;
+  }
+  
+  .nav-links { 
+    display:none; 
+    flex-direction:column; 
+    background:rgba(255, 255, 255, 0.9); 
+    position:absolute; 
+    top:60px; 
+    right:0; 
+    width:200px; 
+    padding:20px; 
+    border-radius:10px;
+  }
+  
+  .nav-links.active { 
+    display:flex; 
+  }
+  
+  .hamburger { 
+    display:flex; 
+  }
+}
+
+
+/* Header Fix */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column; /* Das ist das Problem! */
+  align-items: center;
+  padding: 10px 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 1000;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+/* ÄNDERE DAS ZU: */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row; /* Wichtig: row statt column! */
+  justify-content: space-between; /* Logo links, Nav rechts */
+  align-items: center;
+  padding: 15px 10%; /* Mehr Padding für besseren Abstand */
+  background: rgba(0,0,0,0.5);
+  z-index: 1000;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+/* Hero-Bereich muss Padding oben haben wegen fixed Header */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-size: cover;
+  background-position: center;
+  background-image: url('bilder/thumbnail.jpg');
+  padding-top: 80px; /* WICHTIG: Abstand für den Header */
+}
+
+/* Logo und Nav-Links in einer Zeile */
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+  /* margin-bottom: 5px; entfernen */
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  color: #0077ff;
+}
+
+/* Hero-Text muss höher liegen */
+.hero-text {
+  position: relative;
+  z-index: 2;
+  color: #fff;
+  padding: 40px; /* Mehr Padding für bessere Sichtbarkeit */
+  background: rgba(0,0,0,0.6); /* Dunklerer Hintergrund für besseren Kontrast */
+  border-radius: 10px;
+  margin-top: 60px; /* Noch mehr Abstand vom Header */
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+/* Responsive Anpassungen */
+@media screen and (max-width: 768px) {
+  .header {
+    padding: 10px 5%;
+  }
+  
+  .nav-links {
+    display: none; /* Für Mobile später Hamburger-Menü */
+  }
+  
+  .hero {
+    padding-top: 60px; /* Weniger Padding auf Mobilgeräten */
+  }
+  
+  .hero-text {
+    margin-top: 40px;
+    padding: 20px;
+  }
+}
+
+/* FIX FÜR HERO-TEXT SICHTBARKEIT */
+
+/* 1. Header weniger hoch machen */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 10%; /* WENIGER Padding */
+  background: rgba(0,0,0,0.5);
+  z-index: 1000;
+  height: 60px; /* Feste Höhe */
+}
+
+/* 2. Hero-Bereich mehr Platz nach oben */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-size: cover;
+  background-position: center;
+  padding-top: 80px !important; /* WICHTIG: Mehr Platz für Header */
+  margin-top: 0 !important;
+}
+
+/* 3. Hero-Text SICHER sichtbar machen */
+.hero-text {
+  position: relative;
+  top: 200px;
+  left: 20px;
+  z-index: 100 !important;
+  color: #fff !important;
+  padding: 30px !important;
+  background: rgba(0, 0, 0, 0.8) !important; /* DUNKLER */
+  border-radius: 10 px !important;
+  opacity: 1 !important; /* SOFORT SICHTBAR */
+  transform: translateY(0) !important;
+  margin-top: 20px !important;
+  text-align: center;
+  width: 70%;
+  max-width: 700px;
+}
+
+/* 4. Overlay hinter den Text schieben */
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  z-index: 1; /* UNTER dem Text */
+}
+
+/* 5. Überschrift extra groß und kontrastreich */
+.hero-text h1 {
+  font-size: 3rem !important;
+  margin-bottom: 20px !important;
+  color: #fff !important;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.8) !important;
+}
+
+.hero-text p {
+  font-size: 1.5rem !important;
+  margin-bottom: 30px !important;
+  color: #fff !important;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.8) !important;
+}
+
+
+.hero-text {
+  border: none !important; /* Keine Umrandung */
+}
+
+
+
+/* ===== GALERIE STYLES ===== */
+
+/* Galerie Container */
+.galerie-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Einzelnes Galerie Item */
+.galerie-item {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 200px;
+}
+
+.galerie-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.galerie-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.galerie-item:hover img {
+    transform: scale(1.05);
+}
+
+/* Overlay mit Titel */
+.bild-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+    color: white;
+    padding: 15px;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.galerie-item:hover .bild-overlay {
+    transform: translateY(0);
+}
+
+.bild-overlay h3 {
+    margin: 0;
+    font-size: 16px;
+}
+
+/* Lightbox Modal */
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.lightbox.aktiv {
+    display: flex;
+}
+
+.lightbox-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+    text-align: center;
+}
+
+.lightbox-content img {
+    max-width: 100%;
+    max-height: 70vh;
+    border-radius: 8px;
+    box-shadow: 0 5px 30px rgba(0,0,0,0.5);
+}
+
+.lightbox-info {
+    color: white;
+    margin-top: 20px;
+    padding: 0 20px;
+}
+
+.lightbox-info h2 {
+    margin: 0 0 10px 0;
+    font-size: 24px;
+}
+
+.lightbox-info p {
+    margin: 0;
+    opacity: 0.8;
+    font-size: 16px;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    transition: background 0.3s ease;
+}
+
+.lightbox-close:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .galerie-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        padding: 15px;
+    }
+    
+    .galerie-item {
+        height: 180px;
+    }
+}
+
+@media (max-width: 480px) {
+    .galerie-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .galerie-item {
+        height: 220px;
+    }
+}
+
+/* Navigation Buttons in Lightbox */
+.lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lightbox-nav:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.lightbox-prev {
+    left: 20px;
+}
+
+.lightbox-next {
+    right: 20px;
+}
+
+/* Counter in Lightbox */
+.lightbox-counter {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+}
+
+
+/* ===== SPONSOREN FOOTER ===== */
+.footer {
+  background: #2c3e50;
+  color: #ecf0f1;
+  padding: 40px 20px;
+  margin-top: 60px;
+  text-align: center;
+}
+
+/* Social Media */
+.footer-social {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin-bottom: 30px;
+}
+
+.social-icon {
+  color: #95a5a6;
+  font-size: 22px;
+  transition: all 0.3s ease;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.social-icon:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+/* Sponsoren Bereich */
+.sponsors-section {
+  margin: 40px 0;
+}
+
+.sponsors-section h4 {
+  color: #bdc3c7;
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 25px;
+  letter-spacing: 1px;
+}
+
+/* Sponsoren Bilder nebeneinander */
+.sponsors-logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 40px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.sponsor-logo {
+  flex: 1;
+  min-width: 150px;
+  max-width: 200px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.sponsor-logo:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.sponsor-logo img {
+  max-width: 100%;
+  max-height: 70px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Copyright */
+.copyright {
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 30px;
+}
+
+.copyright p {
+  color: #95a5a6;
+  font-size: 14px;
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .sponsors-logos {
+    gap: 20px;
+  }
+  
+  .sponsor-logo {
+    min-width: 120px;
+    height: 80px;
+    padding: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .sponsors-logos {
+    gap: 15px;
+  }
+  
+  .sponsor-logo {
+    min-width: 100px;
+    height: 70px;
+    padding: 10px;
+  }
+  
+  .sponsor-logo img {
+    max-height: 50px;
+  }
+}
+
+
+}
